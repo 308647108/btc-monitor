@@ -1,0 +1,85 @@
+  name: BTC 1H Monitor
+
+  # ============================================================================
+  # 定时说明（GitHub 的 cron 一律是 UTC，这里已经把北京时间换算好了）
+  #
+  #   需求：北京时间 周一至周五 06:00–24:00
+  #   换算：UTC = 北京时间 - 8h
+  #         北京 06:00 → UTC 前一日 22:00
+  #         北京 24:00 → UTC 当日 16:00
+  #
+  #   1H K 线在整点收盘，所以「北京时间 HH:00 的收盘」要在 UTC (HH-8):00 之后跑。
+  #   下面两条 cron 合起来正好覆盖北京周一至周五 06:00–24:00 的每一根 1H：
+  #
+  #   ① "5 0-16 * * 1-5"   UTC 周一~周五 00:05–16:05
+  #                        = 北京 周一~周五 08:05–24:05
+  #   ② "5 23 * * 0-4"     UTC 周日~周四 23:05
+  #                        = 北京 周一~周五 07:05
+  #
+  #   合计每周 90 次，每次跑 15–30 秒。公开仓库 Actions 完全免费。
+  #   用 :05 而不用 :00，是为了错开 GitHub 整点的定时拥堵（整点延迟可达十几分钟）；
+  #   脚本里还留了 40 分钟的时效兜底。
+  # ============================================================================
+
+  on:
+    schedule:
+      - cron: "5 0-16 * * 1-5"
+      - cron: "5 23 * * 0-4"
+    workflow_dispatch:
+      inputs:
+        force:
+          description: "强制运行（跳过时段/去重，用于测试）填 true"
+          required: false
+          default: "false"
+
+  # 同一时间只允许一个实例，避免重叠运行
+  concurrency:
+    group: btc-1h-monitor
+    cancel-in-progress: false
+
+  # 用默认的 GITHUB_TOKEN，但要显式声明写权限，否则提交状态文件会被拒
+  permissions:
+    contents: write
+
+  jobs:
+    check:
+      runs-on: ubuntu-latest
+      timeout-minutes: 5
+
+      steps:
+        - name: 检出仓库
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0          # 完整历史，pull --rebase 才不会报浅克隆错误
+
+        - name: 安装 Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: "3.11"
+
+        - name: 安装依赖
+          run: pip install requests
+
+        - name: 运行监控
+          env:
+            PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+            FORCE: ${{ github.event.inputs.force == 'true' && '1' || '' }}
+          run: python cloud_monitor.py
+
+        # 只有真的报过警，脚本才会写 .monitor_state.json；
+        # 没有信号时这一步直接跳过，不会产生无意义的提交。
+        - name: 保存去重状态
+          if: always()
+          continue-on-error: true   # 提交失败也不让整个任务变红，只在日志里提示
+          run: |
+            if [ -z "$(git status --porcelain .monitor_state.json)" ]; then
+              echo "状态无变化，跳过提交"
+              exit 0
+            fi
+            git config user.name  "btc-monitor-bot"
+            git config user.email "btc-monitor-bot@users.noreply.github.com"
+            git add .monitor_state.json
+            git commit -m "chore(state): 记录已报警的 1H K 线"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push origin "HEAD:${GITHUB_REF_NAME}" \
+              || echo "⚠ 状态提交失败：请到 Settings → Actions → General → Workflow permissions 选 Read and write permissions"
