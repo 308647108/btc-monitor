@@ -1,0 +1,16 @@
+{
+ "version": 2,
+ "date": "2026-11-03",
+ "day": {
+  "opens": 0,
+  "pnl": 0.0
+ },
+ "positions": [],
+ "history": [],
+ "seen": {
+  "BTC-USDT-SWAP|1793699100000": 1793705696842,
+  "BTC-USDT-SWAP|1793680200000": 1793705696842,
+  "BTC-USDT-SWAP|1793668500000": 1793705696842
+ },
+ "last_open": {}
+}
