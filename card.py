@@ -5,16 +5,17 @@
   · 只用内联 style，不用 <style> 标签、class、id
   · 键值行用 flex 左右分布：宿主就算强行 table-layout:fixed 也不会左右重叠；
     flex 被丢掉时两个 div 会自然上下堆叠，仍然可读，不会压字
-  · 卡片自带深色底（#12161D）：微信暗色模式下宿主页面是黑的，自带底色才能保证
+  · 卡片自带深色底（#121212）：微信暗色模式下宿主页面是黑的，自带底色才能保证
     亮青 / 亮绿 / 亮红在浅色和深色两种模式下都清楚
   · 颜色只用于文字与单元格底色，丢了也只是变朴素，不会变成乱码
   · 所有正文默认 HTML 转义，绝不把外部文本（新闻标题等）当标签插入
 
-配色规则（暗色模式）：
-  · 右侧关键数据（挂单区间 / 止损 / 止盈 / 价格）→ 亮青 #00FFFF
-  · 右侧止盈 → 亮绿 #2BE08A；止损 / 风险 → 亮红 #FF5A5F
-  · 右侧辅助说明（分层 / 纯辅助 n 维）→ 浅灰 #A0A0A0
-  · 数量（n 张）→ 纯白 #FFFFFF
+配色规则（暗色模式，色值全部写死，禁止再用 #333 / #666 / #444 这类暗灰）：
+  · 方向（做多 / 做空）→ 亮绿 #00FF00 / 亮红 #FF4D4D
+  · 数据 / 价格 / 点位（触发位、入场区间、止盈）→ 亮青 #00FFFF
+  · 止损位 → 亮黄 #FFD700（同属点位，靠黄色和入场区区分）
+  · 辅助说明（分层 / 纯辅助 n 维 / 规则n / 震荡→半仓）→ 浅灰 #B0B0B0
+  · 数量（n 张）→ 纯白 #FFFFFF + 粗体
 
 用法：
     c = Card("做多", "BTC · 1H", "Killzone 美盘 · 11-03 02:35 北京")
@@ -28,29 +29,32 @@ from html import escape
 
 # 方向 → (主色, 符号)
 PALETTE = {
-    "做多": ("#16C784", "▲"),
+    "做多": ("#0E9F6E", "▲"),
     "做空": ("#EA3943", "▼"),
     "否决": ("#6B7280", "✕"),
     "测试": ("#2563EB", "●"),
-    "预警": ("#F59E0B", "!"),
+    "预警": ("#C2410C", "!"),
 }
 
-# ------------------------------------------------ 暗色安全色板
-BG        = "#12161D"   # 卡片底色：不依赖宿主页面是黑还是白
-BG_META   = "#1A2029"   # 表头下的一行元信息
-BG_SECT   = "#1B222C"   # 分组标题
-BORDER    = "#2A313C"   # 单元格 / 外框描边
-FG        = "#E8EDF5"   # 正文
-FG_LABEL  = "#C7D0DD"   # 左侧标签
-FG_NOTE   = "#A0A0A0"   # 辅助说明（小注、分层、纯辅助 n 维）
-FG_FOOT   = "#8A93A3"   # 页脚
+# ------------------------------------------------ 暗色安全色板（强制固定，不随系统主题反转）
+BG        = "#121212"   # 卡片底色：写死，浅色 / 深色模式都是这块黑底
+BG_META   = "#1C1C1C"   # 表头下的一行元信息
+BG_SECT   = "#1E1E1E"   # 分组标题
+BORDER    = "#3A3A3A"   # 单元格 / 外框描边
+FG        = "#FFFFFF"   # 基础字体：纯白
+FG_LABEL  = "#D6D6D6"   # 左侧标签
+FG_NOTE   = "#B0B0B0"   # 辅助说明（小注、分层、纯辅助 n 维）
+FG_FOOT   = "#B0B0B0"   # 页脚
 
 TONE = {
-    "text":   "#00FFFF",   # 关键数据（挂单区间 / 止损区间 / 目标位 / 触发价）：亮青
-    "loss":   "#FF5A5F",   # 止损 / 风险：亮红
-    "profit": "#2BE08A",   # 止盈：亮绿
-    "muted":  "#A0A0A0",   # 辅助说明：浅灰
-    "qty":    "#FFFFFF",   # 数量（张数）：纯白
+    "text":   "#00FFFF",   # 数据 / 价格 / 点位（触发位、入场区间、止盈）：亮青
+    "gold":   "#FFD700",   # 数据 / 点位（止损）：亮黄
+    "long":   "#00FF00",   # 方向：做多（亮绿）
+    "short":  "#FF4D4D",   # 方向：做空（亮红）
+    "loss":   "#FF4D4D",   # 亏损 / 风险数字：亮红
+    "profit": "#00FF00",   # 盈利数字：亮绿
+    "muted":  "#B0B0B0",   # 辅助说明：浅灰
+    "qty":    "#FFFFFF",   # 数量（张数）：纯白 + 粗体
 }
 
 FONT = ("-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB',"
@@ -85,6 +89,8 @@ class Card:
         if note:
             left += (f'<div style="color:{FG_NOTE};font-size:12px;margin-top:3px;">'
                      f'{escape(str(note))}</div>')
+        if tone == "side":           # 方向行：做多亮绿 / 做空亮红，自动按卡片方向取色
+            tone = {"做多": "long", "做空": "short"}.get(self.side, "muted")
         if tone == "muted":          # 分层 / 纯辅助 n 维：字多，允许换行、字号小一档
             val_style = ("flex:0 1 auto;max-width:60%;text-align:right;"
                          "white-space:normal;word-break:break-word;"
@@ -105,11 +111,11 @@ class Card:
     def flow(self, ok, head, lines, warn=False):
         """订单流整块：暗色底 + 左侧色条 + 标题 + 若干小行。"""
         if ok:
-            bg, bar, fg, body = "#0E2419", "#2BE08A", "#5BF0A6", "#C7D7CE"
+            bg, bar, fg, body = "#0E2419", "#00FF00", "#5BF0A6", "#E8F0EB"
         elif warn:
-            bg, bar, fg, body = "#2A210E", "#F5A623", "#FFC65C", "#DCD3C2"
+            bg, bar, fg, body = "#2A210E", "#FFD700", "#FFD75E", "#F0E9DA"
         else:
-            bg, bar, fg, body = "#2A1417", "#FF5A5F", "#FF8A8D", "#DCC7C9"
+            bg, bar, fg, body = "#2A1417", "#FF4D4D", "#FF9A9A", "#F2DEDE"
         text = "".join(
             f'<div style="color:{body};font-size:13px;margin-top:4px;">{escape(str(x))}</div>'
             for x in lines)
@@ -122,9 +128,9 @@ class Card:
 
     def banner(self, text, tone="warn"):
         """整块警示条（消息面异常 / 未验证），放在表格最上方。"""
-        bg, fg = {"warn": ("#2A210E", "#FFC65C"),
-                  "bad": ("#2A1417", "#FF8A8D"),
-                  "info": ("#101E33", "#7FB6FF")}.get(tone, ("#2A210E", "#FFC65C"))
+        bg, fg = {"warn": ("#2A210E", "#FFD700"),
+                  "bad": ("#2A1417", "#FF9A9A"),
+                  "info": ("#101E33", "#8CC2FF")}.get(tone, ("#2A210E", "#FFD700"))
         self._rows.insert(
             0,
             f'<tr><td colspan="2" style="background:{bg};color:{fg};padding:10px 14px;'
@@ -143,10 +149,10 @@ class Card:
             return self
         blocks = []
         for i, t in enumerate(tags):
-            bg, bar, fg, body = {"bad": ("#2A1417", "#FF5A5F", "#FF8A8D", "#DCC7C9"),
-                                 "warn": ("#2A210E", "#F5A623", "#FFC65C", "#DCD3C2")}.get(
+            bg, bar, fg, body = {"bad": ("#2A1417", "#FF4D4D", "#FF9A9A", "#F2DEDE"),
+                                 "warn": ("#2A210E", "#FFD700", "#FFD75E", "#F0E9DA")}.get(
                                      t.get("tone", "warn"),
-                                     ("#2A210E", "#F5A623", "#FFC65C", "#DCD3C2"))
+                                     ("#2A210E", "#FFD700", "#FFD75E", "#F0E9DA"))
             text = "".join(
                 f'<div style="color:{body};font-size:13px;margin-top:2px;">'
                 f'{escape(str(x))}</div>'
@@ -183,7 +189,7 @@ class Card:
         """
         self._rows.append(
             f'<tr><td colspan="2" style="padding:12px 14px;font-size:14px;'
-            f'line-height:1.7;color:#D6DCE5;">{html_fragment}</td></tr>')
+            f'line-height:1.7;color:#FFFFFF;">{html_fragment}</td></tr>')
         return self
 
     def notes(self, lines):
