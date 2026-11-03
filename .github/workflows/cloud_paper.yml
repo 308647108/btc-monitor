@@ -1,0 +1,71 @@
+name: Cloud Paper Radar
+
+# 方案 X 云端版：只读行情 + 虚拟记账 + PushPlus 推送。
+# 永不下单：脚本里没有任何 OKX 交易接口调用，也没有 API Key。
+on:
+  schedule:
+    # UTC。北京时间 = UTC+8：
+    #   00:00–16:30 UTC = 北京 08:00–00:30，正好覆盖 Killzone + 15 分钟容错。
+    #   其余时段不跑，省 Actions 额度；隔夜的仓位下一轮会按 15m K 线逐根补算，
+    #   不会漏掉止损/止盈（check_position 是重放式的，不是只看现价）。
+    - cron: "*/30 0-16 * * *"
+  workflow_dispatch: {}          # 手动跑一轮，用于部署后验证
+
+# 必须给写权限，否则跑完提交不了 paper_state.json → 下一轮读到空状态 → 重复记账
+permissions:
+  contents: write
+
+# 同一个组串行执行：两条流水线同时改状态文件会互相覆盖
+concurrency:
+  group: cloud-paper
+  cancel-in-progress: false
+
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # 浅克隆下 git pull --rebase 会失败，必须全量
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run paper radar
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          PYTHONIOENCODING: utf-8
+          TZ: Asia/Shanghai
+        run: python cloud_paper.py
+
+      # 无论脚本成功还是报错，都把状态落盘：宁可保住旧账本，也不要丢持仓
+      - name: Commit paper state
+        if: always()
+        run: |
+          set -e
+          git config user.name  "cloud-paper-bot"
+          git config user.email "cloud-paper-bot@users.noreply.github.com"
+          if [ ! -f paper_state.json ]; then
+            echo "paper_state.json 不存在（本轮没有产生状态），跳过提交"
+            exit 0
+          fi
+          git add paper_state.json
+          if git diff --cached --quiet; then
+            echo "状态无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore(paper): state $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash && git push; then
+              echo "状态已推送"
+              exit 0
+            fi
+            echo "push 失败，第 $i 次重试…"
+            sleep 5
+          done
+          echo "连续 3 次推送失败，请检查 branch protection / token 权限" >&2
+          exit 1
