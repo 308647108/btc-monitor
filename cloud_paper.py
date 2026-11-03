@@ -818,7 +818,8 @@ def _aux_block(hits):
     return lines
 
 
-def build_entry_card(track, tier, n_hits, hits, sig, plan, flow, st, seq):
+def build_entry_card(track, tier, n_hits, hits, sig, plan, flow, st, seq,
+                     test=False):
     name = _NAME[sig["inst"]]
     side = sig["side"]
     tags = []
@@ -859,6 +860,9 @@ def build_entry_card(track, tier, n_hits, hits, sig, plan, flow, st, seq):
         card.risk(tags)
     else:
         card.banner("✅ 无风险标签", "info")
+    if test:
+        card.banner("🔌 连通用测试：手动触发的假信号，不记账、不建仓、不占冷却",
+                    "info")
 
     card.kv("分层", f"{tier}（命中 {n_hits} 维）",
             note="结构主导 ≥1 维触发 ｜ 纯辅助 ≥3 维触发")
@@ -927,6 +931,59 @@ def build_close_card(pos, ex, st):
     card.footer(["云端记账样本，与你的实盘盈亏无关。",
                  "仅为提醒，请自行判断，不构成交易建议。"])
     return card.html()
+
+
+# ================================================================ 连通性测试
+def _last_price(inst):
+    cs = fetch_15m(inst, limit=2)
+    return cs[-1]["close"] if cs else None
+
+
+def build_test_card(st, now, price=None):
+    """连通性测试卡片：用一套固定的假做多信号走真实渲染路径。
+
+    只渲染、只推送，不写账本、不建仓、不占同品种冷却。
+    """
+    inst = "BTC-USDT-SWAP"
+    px = price or _safe(_last_price, inst) or 100000.0
+    risk_px = px * 0.004                       # 约 0.4%，1 张 ≈ 3.2U
+    entry = px
+    stop = entry - risk_px
+    tp = entry + MIN_TP_R * risk_px
+    plan = {
+        "entry": entry, "stop": stop, "tp": tp,
+        "tp_src": f"测试用 1H 结构位，约 {MIN_TP_R:g}R",
+        "risk_px": risk_px, "risk_pct": risk_px / entry * 100.0,
+        "rr": MIN_TP_R, "drift_r": 0.0, "age_min": 0.0,
+        "idx": 0, "ts": 0, "trend": "up", "trend_why": "4H 上升结构（测试数据）",
+        "lots": 0.0,
+    }
+    plan["lots"] = base.size_position(entry, risk_px, RISK_U,
+                                      SYMBOLS[inst]["ct"],
+                                      SYMBOLS[inst]["lot"])[0]
+    now_ms = int(now.timestamp() * 1000)
+    sig = {
+        "inst": inst, "side": "做多", "sgn": 1,
+        "ext": stop, "lvl": entry - risk_px * 0.5, "kz": "08-24",
+        "sweep_ts": now_ms - 45 * 60_000, "choch_ts": now_ms - 30 * 60_000,
+        "choch_close": entry, "delay_min": 15,
+    }
+    flow = {
+        "ok": True, "veto": None, "cvd": 12.5, "cvd_ratio": 6.2,
+        "buy_ratio": 55.1, "cvd_usd": 1_250_000.0, "p0": entry * 0.997,
+        "p1": entry, "dpct": 0.3, "imb": 4.5, "spread_bps": 0.8,
+        "wall_ratio": 0.12, "whale_buy": 180_000.0, "whale_sell": 60_000.0,
+        "whale_net": 120_000.0, "whale_n": 3,
+    }
+    hits = [
+        ("PA", "① 强信号K：实体 1.8× 前 5 根均实体，收在最高 1/3"),
+        ("FLOW", f"CVD +12.5 ｜ 占量 +6.2% ｜ 买占比 55.1%（{_px(entry)} 附近）"),
+        ("H4", "4H 上升结构：HH/HL 未被破坏"),
+        ("FIB", "回撤 0.618 落在折价区"),
+        ("VOL", "量能 1.9× 20 根均量"),
+    ]
+    return build_entry_card(1, "👑 A+级", len(hits), hits, sig, plan, flow,
+                            st, int(st["day"]["opens"]) + 1, test=True)
 
 
 # ================================================================ 主流程
@@ -1139,16 +1196,23 @@ def print_patches():
 def main(argv=None):
     ap = argparse.ArgumentParser(description="云端模拟雷达 v2（只读行情 + 虚拟记账）")
     ap.add_argument("--self-test", action="store_true", help="离线自检")
+    ap.add_argument("--test", action="store_true",
+                    help="强制发一张『云端连通用测试』卡片（不记账、不建仓）")
     ap.add_argument("--state", default=STATE_PATH, help="状态文件路径")
     args = ap.parse_args(argv)
 
     if args.self_test:
         return self_test()
 
+    # GitHub 上手动触发（Actions → Run workflow）也算测试模式
+    test_mode = bool(args.test) or \
+        os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+
     now = datetime.datetime.now(BJT)
     now_ms = int(time.time() * 1000)
     print(f"===== 云端模拟雷达 v2 {now:%Y-%m-%d %H:%M:%S} (北京) "
-          f"｜ Killzone {killzone(now) or '非活跃'} ｜ {RISK_U:g}U/单 ｜ 无单数/持仓上限 =====")
+          f"｜ Killzone {killzone(now) or '非活跃'} ｜ {RISK_U:g}U/单 ｜ 无单数/持仓上限"
+          f"{' ｜ 🔌 测试模式（手动触发，必发测试卡片）' if test_mode else ''} =====")
     print_patches()
 
     if not os.environ.get("PUSHPLUS_TOKEN"):
@@ -1170,6 +1234,13 @@ def main(argv=None):
     except Exception as e:  # noqa: BLE001
         print(f"[ERR] 状态写盘失败：{type(e).__name__}: {e}")
         return 1
+
+    if test_mode:
+        html = build_test_card(st, now)
+        ok = push_wechat("☁️【云端连通用测试】BTC 做多（假信号）", html)
+        print(f"[TEST] 连通性测试卡片 {'已发出' if ok else '未发出'} ｜ "
+              f"测试卡片自身不记账、不建仓、不占冷却")
+        sent += 1 if ok else 0
 
     print(f"[DONE] 推送 {sent} 条 ｜ 在手 {len(st['positions'])} 笔 ｜ "
           f"今日 {st['day']['opens']} 单 ｜ 今日 {st['day']['pnl']:+.2f}U")
@@ -1428,8 +1499,7 @@ def self_test():
     except RuntimeError:
         ck("坏文件必须报错", True)
 
-    # 9. 卡片：轨道二警示置顶 + 标题格式
-    if sigs:
+    # 9. 卡片：轨道二警示置顶 + 标题格式    if sigs:
         sig = dict(sigs[0], inst="BTC-USDT-SWAP")
         plan = build_track1_plan(sig, h1, h4, dt(12, 0), m15)
         plan["lots"] = 0.9
@@ -1452,6 +1522,18 @@ def self_test():
                                  flow_bad, st, 2)
         ck("轨道二警示置顶", 0 < html2.find("无1H扫单结构") < html2.find("模拟入场"))
         ck("轨道二标注左侧信号", "左侧" in html2)
+
+    # 10. 连通性测试卡片：走真实渲染路径，且不写账本
+    st_t = default_state()
+    st_t["day"]["opens"] = 4
+    before = json.dumps(st_t, sort_keys=True)
+    html_t = build_test_card(st_t, dt(12, 0), price=100000.0)
+    ck("测试卡片有内容", len(html_t) > 500, len(html_t))
+    ck("测试卡片标注「连通用测试」", "连通用测试" in html_t)
+    ck("测试卡片是完整入场卡片",
+       "模拟入场" in html_t and "结构止盈" in html_t and "建议仓位" in html_t)
+    ck("测试卡片标题要素（做多/假信号由推送标题给出）", "BTC" in html_t)
+    ck("测试卡片不写账本", json.dumps(st_t, sort_keys=True) == before)
 
     total = len(ok) + len(bad)
     print("=" * 62)
