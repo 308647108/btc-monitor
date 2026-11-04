@@ -30,8 +30,8 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793794500000,
-   "bars_held": 28,
+   "last_bar_ts": 1793799000000,
+   "bars_held": 33,
    "be": false,
    "flow_ok": true,
    "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
@@ -58,8 +58,8 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793794500000,
-   "bars_held": 28,
+   "last_bar_ts": 1793799000000,
+   "bars_held": 33,
    "be": false,
    "flow_ok": true,
    "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
@@ -74,7 +74,10 @@
   "ETH-USDT-SWAP|1793715300000": 1793718944632,
   "ETH-USDT-SWAP|1793765700000": 1793767978534,
   "BTC-USDT-SWAP|1793768400000": 1793771672032,
-  "SOL-USDT-SWAP|1793768400000": 1793771672032
+  "SOL-USDT-SWAP|1793768400000": 1793771672032,
+  "BTC-USDT-SWAP|1793794500000": 1793799743696,
+  "ETH-USDT-SWAP|1793794500000": 1793799743696,
+  "SOL-USDT-SWAP|1793794500000": 1793799743696
  },
  "last_open": {
   "BTC-USDT-SWAP": 1793771672032,
