@@ -1,8 +1,8 @@
 {
  "version": 2,
- "date": "2026-11-04",
+ "date": "2026-11-05",
  "day": {
-  "opens": 2,
+  "opens": 0,
   "pnl": 0.0
  },
  "positions": [
@@ -30,8 +30,8 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793807100000,
-   "bars_held": 42,
+   "last_bar_ts": 1793810700000,
+   "bars_held": 46,
    "be": true,
    "flow_ok": true,
    "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
@@ -58,8 +58,8 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793807100000,
-   "bars_held": 42,
+   "last_bar_ts": 1793810700000,
+   "bars_held": 46,
    "be": true,
    "flow_ok": true,
    "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
