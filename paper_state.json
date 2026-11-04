@@ -30,8 +30,8 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793775600000,
-   "bars_held": 7,
+   "last_bar_ts": 1793781000000,
+   "bars_held": 13,
    "be": false,
    "flow_ok": true,
    "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
@@ -58,8 +58,8 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793775600000,
-   "bars_held": 7,
+   "last_bar_ts": 1793781000000,
+   "bars_held": 13,
    "be": false,
    "flow_ok": true,
    "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
