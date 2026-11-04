@@ -2,10 +2,69 @@
  "version": 2,
  "date": "2026-11-04",
  "day": {
-  "opens": 0,
+  "opens": 2,
   "pnl": 0.0
  },
- "positions": [],
+ "positions": [
+  {
+   "id": "BTC-1793768400000-1",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做多",
+   "sgn": 1,
+   "entry": 77345.8,
+   "stop": 75612.75420000001,
+   "tp": 81768.0,
+   "risk_px": 1733.0457999999926,
+   "risk_u": 8.0,
+   "lots": 0.44,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 1,
+   "tier": "👑 A+级",
+   "hits": [
+    "PA",
+    "VOL",
+    "ATR",
+    "VGAP"
+   ],
+   "opened_ts": 1793771672032,
+   "signal_ts": 1793768400000,
+   "last_bar_ts": 1793769300000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
+  },
+  {
+   "id": "SOL-1793768400000-2",
+   "name": "SOL",
+   "inst": "SOL-USDT-SWAP",
+   "side": "做多",
+   "sgn": 1,
+   "entry": 92.29,
+   "stop": 89.68771,
+   "tp": 100.38,
+   "risk_px": 2.6022900000000107,
+   "risk_u": 8.0,
+   "lots": 2.96,
+   "ct": 1.0,
+   "tp_src": "1H 结构位",
+   "track": 1,
+   "tier": "🔥 A级",
+   "hits": [
+    "PA",
+    "ATR"
+   ],
+   "opened_ts": 1793771672032,
+   "signal_ts": 1793768400000,
+   "last_bar_ts": 1793769300000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
+  }
+ ],
  "history": [],
  "seen": {
   "BTC-USDT-SWAP|1793699100000": 1793705696842,
@@ -13,7 +72,12 @@
   "BTC-USDT-SWAP|1793668500000": 1793705696842,
   "BTC-USDT-SWAP|1793715300000": 1793718944632,
   "ETH-USDT-SWAP|1793715300000": 1793718944632,
-  "ETH-USDT-SWAP|1793765700000": 1793767978534
+  "ETH-USDT-SWAP|1793765700000": 1793767978534,
+  "BTC-USDT-SWAP|1793768400000": 1793771672032,
+  "SOL-USDT-SWAP|1793768400000": 1793771672032
  },
- "last_open": {}
+ "last_open": {
+  "BTC-USDT-SWAP": 1793771672032,
+  "SOL-USDT-SWAP": 1793771672032
+ }
 }
