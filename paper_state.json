@@ -3,9 +3,10 @@
  "date": "2026-11-05",
  "day": {
   "opens": 0,
-  "pnl": 0.0
+  "pnl": 24.73
  },
- "positions": [
+ "positions": [],
+ "history": [
   {
    "id": "BTC-1793768400000-1",
    "name": "BTC",
@@ -30,11 +31,17 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793852100000,
-   "bars_held": 92,
+   "last_bar_ts": 1793855700000,
+   "bars_held": 96,
    "be": true,
    "flow_ok": true,
-   "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
+   "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）",
+   "exit": 80433.6,
+   "why": "超时24h",
+   "r": 1.7362,
+   "u": 13.89,
+   "exit_ts": 1793856600000,
+   "closed_ts": 1793856851294
   },
   {
    "id": "SOL-1793768400000-2",
@@ -58,14 +65,19 @@
    ],
    "opened_ts": 1793771672032,
    "signal_ts": 1793768400000,
-   "last_bar_ts": 1793852100000,
-   "bars_held": 92,
+   "last_bar_ts": 1793855700000,
+   "bars_held": 96,
    "be": true,
    "flow_ok": true,
-   "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）"
+   "flow_veto": "价涨 + CVD 净卖（空头回补的假涨）",
+   "exit": 95.91,
+   "why": "超时24h",
+   "r": 1.3549,
+   "u": 10.84,
+   "exit_ts": 1793856600000,
+   "closed_ts": 1793856851294
   }
  ],
- "history": [],
  "seen": {
   "BTC-USDT-SWAP|1793699100000": 1793705696842,
   "BTC-USDT-SWAP|1793680200000": 1793705696842,
