@@ -30,8 +30,8 @@
    ],
    "opened_ts": 1794038174051,
    "signal_ts": 1794033900000,
-   "last_bar_ts": 1794034800000,
-   "bars_held": 0,
+   "last_bar_ts": 1794041100000,
+   "bars_held": 7,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
