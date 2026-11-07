@@ -1,9 +1,9 @@
 {
  "version": 2,
- "date": "2026-11-07",
+ "date": "2026-11-08",
  "day": {
-  "opens": 2,
-  "pnl": -2.52
+  "opens": 0,
+  "pnl": 0.0
  },
  "positions": [
   {
@@ -30,8 +30,8 @@
    ],
    "opened_ts": 1794038174051,
    "signal_ts": 1794033900000,
-   "last_bar_ts": 1794065400000,
-   "bars_held": 34,
+   "last_bar_ts": 1794069000000,
+   "bars_held": 38,
    "be": true,
    "flow_ok": true,
    "flow_veto": null
@@ -43,7 +43,7 @@
    "side": "做空",
    "sgn": -1,
    "entry": 75933.9,
-   "stop": 76292.7339,
+   "stop": 75933.9,
    "tp": 74800.1,
    "risk_px": 358.83390000001236,
    "risk_u": 8.0,
@@ -59,9 +59,9 @@
    ],
    "opened_ts": 1794051205398,
    "signal_ts": 1794047400000,
-   "last_bar_ts": 1794065400000,
-   "bars_held": 19,
-   "be": false,
+   "last_bar_ts": 1794069000000,
+   "bars_held": 23,
+   "be": true,
    "flow_ok": true,
    "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 47%"
   }
