@@ -13,7 +13,7 @@
    "side": "做空",
    "sgn": -1,
    "entry": 90.22,
-   "stop": 90.53178571428572,
+   "stop": 90.22,
    "tp": 88.87,
    "risk_px": 0.311785714285717,
    "risk_u": 8.0,
@@ -30,9 +30,9 @@
    ],
    "opened_ts": 1794038174051,
    "signal_ts": 1794033900000,
-   "last_bar_ts": 1794043800000,
-   "bars_held": 10,
-   "be": false,
+   "last_bar_ts": 1794047400000,
+   "bars_held": 14,
+   "be": true,
    "flow_ok": true,
    "flow_veto": null
   }
