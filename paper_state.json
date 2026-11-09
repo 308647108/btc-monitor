@@ -29,8 +29,8 @@
    ],
    "opened_ts": 1794198912922,
    "signal_ts": 1794197700000,
-   "last_bar_ts": 1794203100000,
-   "bars_held": 5,
+   "last_bar_ts": 1794208500000,
+   "bars_held": 11,
    "be": true,
    "flow_ok": true,
    "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 57%"
@@ -59,8 +59,8 @@
    ],
    "opened_ts": 1794198912922,
    "signal_ts": 1794197700000,
-   "last_bar_ts": 1794203100000,
-   "bars_held": 5,
+   "last_bar_ts": 1794208500000,
+   "bars_held": 11,
    "be": true,
    "flow_ok": true,
    "flow_veto": null
