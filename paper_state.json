@@ -1,11 +1,73 @@
 {
  "version": 2,
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "day": {
-  "opens": 3,
-  "pnl": -10.99
+  "opens": 2,
+  "pnl": 0.0
  },
- "positions": [],
+ "positions": [
+  {
+   "id": "BTC-1794242700000-1",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 74890.5,
+   "stop": 75391.95,
+   "tp": 73385.0,
+   "risk_px": 501.44999999999345,
+   "risk_u": 8.0,
+   "lots": 1.38,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-4维共振",
+   "hits": [
+    "H4",
+    "FIB",
+    "LSR",
+    "ATR"
+   ],
+   "opened_ts": 1794243890404,
+   "signal_ts": 1794242700000,
+   "last_bar_ts": 1794243600000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 52%"
+  },
+  {
+   "id": "SOL-1794241800000-2",
+   "name": "SOL",
+   "inst": "SOL-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 86.61,
+   "stop": 87.375,
+   "tp": 84.69749999999999,
+   "risk_px": 0.7650000000000032,
+   "risk_u": 8.0,
+   "lots": 9.39,
+   "ct": 1.0,
+   "tp_src": "无结构位，按 2.5R 兜底",
+   "track": 2,
+   "tier": "🌌 纯辅助-5维极限共振",
+   "hits": [
+    "PA",
+    "H4",
+    "FIB",
+    "LSR",
+    "ATR"
+   ],
+   "opened_ts": 1794243890404,
+   "signal_ts": 1794241800000,
+   "last_bar_ts": 1794242700000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "价跌 + CVD 净买（有主动买盘托底）"
+  }
+ ],
  "history": [
   {
    "id": "BTC-1793768400000-1",
@@ -351,11 +413,13 @@
   "ETH-USDT-SWAP|1794157200000": 1794185859797,
   "BTC-USDT-SWAP|FVG|1794197700000": 1794198912922,
   "ETH-USDT-SWAP|FVG|1794197700000": 1794198912922,
-  "SOL-USDT-SWAP|FVG|1794197700000": 1794198912922
+  "SOL-USDT-SWAP|FVG|1794197700000": 1794198912922,
+  "BTC-USDT-SWAP|FVG|1794242700000": 1794243890404,
+  "SOL-USDT-SWAP|FVG|1794241800000": 1794243890404
  },
  "last_open": {
-  "BTC-USDT-SWAP": 1794198912922,
-  "SOL-USDT-SWAP": 1794198912922,
+  "BTC-USDT-SWAP": 1794243890404,
+  "SOL-USDT-SWAP": 1794243890404,
   "ETH-USDT-SWAP": 1793930936005
  }
 }
