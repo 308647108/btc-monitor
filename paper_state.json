@@ -3,7 +3,7 @@
  "date": "2026-11-10",
  "day": {
   "opens": 3,
-  "pnl": -9.2
+  "pnl": -19.59
  },
  "positions": [
   {
@@ -13,7 +13,7 @@
    "side": "做空",
    "sgn": -1,
    "entry": 86.61,
-   "stop": 87.375,
+   "stop": 86.61,
    "tp": 84.69749999999999,
    "risk_px": 0.7650000000000032,
    "risk_u": 8.0,
@@ -31,40 +31,11 @@
    ],
    "opened_ts": 1794243890404,
    "signal_ts": 1794241800000,
-   "last_bar_ts": 1794275100000,
-   "bars_held": 36,
-   "be": false,
+   "last_bar_ts": 1794278700000,
+   "bars_held": 40,
+   "be": true,
    "flow_ok": true,
    "flow_veto": "价跌 + CVD 净买（有主动买盘托底）"
-  },
-  {
-   "id": "BTC-1794271500000-3",
-   "name": "BTC",
-   "inst": "BTC-USDT-SWAP",
-   "side": "做空",
-   "sgn": -1,
-   "entry": 75000.0,
-   "stop": 75251.46428571429,
-   "tp": 74302.1,
-   "risk_px": 251.46428571428572,
-   "risk_u": 8.0,
-   "lots": 2.45,
-   "ct": 0.01,
-   "tp_src": "1H 结构位",
-   "track": 2,
-   "tier": "🧬 纯辅助-3维共振",
-   "hits": [
-    "PA",
-    "H4",
-    "LSR"
-   ],
-   "opened_ts": 1794275964242,
-   "signal_ts": 1794271500000,
-   "last_bar_ts": 1794272400000,
-   "bars_held": 0,
-   "be": false,
-   "flow_ok": true,
-   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 57%"
   }
  ],
  "history": [
@@ -420,6 +391,41 @@
    "u": -9.2,
    "exit_ts": 1794269700000,
    "closed_ts": 1794272109602
+  },
+  {
+   "id": "BTC-1794271500000-3",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 75000.0,
+   "stop": 75251.46428571429,
+   "tp": 74302.1,
+   "risk_px": 251.46428571428572,
+   "risk_u": 8.0,
+   "lots": 2.45,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-3维共振",
+   "hits": [
+    "PA",
+    "H4",
+    "LSR"
+   ],
+   "opened_ts": 1794275964242,
+   "signal_ts": 1794271500000,
+   "last_bar_ts": 1794272400000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 57%",
+   "exit": 75251.46428571429,
+   "why": "止损",
+   "r": -1.2988,
+   "u": -10.39,
+   "exit_ts": 1794273300000,
+   "closed_ts": 1794279068087
   }
  ],
  "seen": {
