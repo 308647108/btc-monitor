@@ -3,41 +3,9 @@
  "date": "2026-11-10",
  "day": {
   "opens": 3,
-  "pnl": -19.59
+  "pnl": -0.49
  },
- "positions": [
-  {
-   "id": "SOL-1794241800000-2",
-   "name": "SOL",
-   "inst": "SOL-USDT-SWAP",
-   "side": "做空",
-   "sgn": -1,
-   "entry": 86.61,
-   "stop": 86.61,
-   "tp": 84.69749999999999,
-   "risk_px": 0.7650000000000032,
-   "risk_u": 8.0,
-   "lots": 9.39,
-   "ct": 1.0,
-   "tp_src": "无结构位，按 2.5R 兜底",
-   "track": 2,
-   "tier": "🌌 纯辅助-5维极限共振",
-   "hits": [
-    "PA",
-    "H4",
-    "FIB",
-    "LSR",
-    "ATR"
-   ],
-   "opened_ts": 1794243890404,
-   "signal_ts": 1794241800000,
-   "last_bar_ts": 1794305700000,
-   "bars_held": 70,
-   "be": true,
-   "flow_ok": true,
-   "flow_veto": "价跌 + CVD 净买（有主动买盘托底）"
-  }
- ],
+ "positions": [],
  "history": [
   {
    "id": "BTC-1793768400000-1",
@@ -426,6 +394,43 @@
    "u": -10.39,
    "exit_ts": 1794273300000,
    "closed_ts": 1794279068087
+  },
+  {
+   "id": "SOL-1794241800000-2",
+   "name": "SOL",
+   "inst": "SOL-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 86.61,
+   "stop": 86.61,
+   "tp": 84.69749999999999,
+   "risk_px": 0.7650000000000032,
+   "risk_u": 8.0,
+   "lots": 9.39,
+   "ct": 1.0,
+   "tp_src": "无结构位，按 2.5R 兜底",
+   "track": 2,
+   "tier": "🌌 纯辅助-5维极限共振",
+   "hits": [
+    "PA",
+    "H4",
+    "FIB",
+    "LSR",
+    "ATR"
+   ],
+   "opened_ts": 1794243890404,
+   "signal_ts": 1794241800000,
+   "last_bar_ts": 1794306600000,
+   "bars_held": 71,
+   "be": true,
+   "flow_ok": true,
+   "flow_veto": "价跌 + CVD 净买（有主动买盘托底）",
+   "exit": 84.69749999999999,
+   "why": "止盈",
+   "r": 2.388,
+   "u": 19.1,
+   "exit_ts": 1794307500000,
+   "closed_ts": 1794309719047
   }
  ],
  "seen": {
