@@ -3,39 +3,9 @@
  "date": "2026-11-10",
  "day": {
   "opens": 2,
-  "pnl": 0.0
+  "pnl": -9.2
  },
  "positions": [
-  {
-   "id": "BTC-1794242700000-1",
-   "name": "BTC",
-   "inst": "BTC-USDT-SWAP",
-   "side": "做空",
-   "sgn": -1,
-   "entry": 74890.5,
-   "stop": 75391.95,
-   "tp": 73385.0,
-   "risk_px": 501.44999999999345,
-   "risk_u": 8.0,
-   "lots": 1.38,
-   "ct": 0.01,
-   "tp_src": "1H 结构位",
-   "track": 2,
-   "tier": "🧬 纯辅助-4维共振",
-   "hits": [
-    "H4",
-    "FIB",
-    "LSR",
-    "ATR"
-   ],
-   "opened_ts": 1794243890404,
-   "signal_ts": 1794242700000,
-   "last_bar_ts": 1794243600000,
-   "bars_held": 0,
-   "be": false,
-   "flow_ok": true,
-   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 52%"
-  },
   {
    "id": "SOL-1794241800000-2",
    "name": "SOL",
@@ -61,8 +31,8 @@
    ],
    "opened_ts": 1794243890404,
    "signal_ts": 1794241800000,
-   "last_bar_ts": 1794242700000,
-   "bars_held": 0,
+   "last_bar_ts": 1794271500000,
+   "bars_held": 32,
    "be": false,
    "flow_ok": true,
    "flow_veto": "价跌 + CVD 净买（有主动买盘托底）"
@@ -385,6 +355,42 @@
    "u": -0.8,
    "exit_ts": 1794236400000,
    "closed_ts": 1794239826093
+  },
+  {
+   "id": "BTC-1794242700000-1",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 74890.5,
+   "stop": 75391.95,
+   "tp": 73385.0,
+   "risk_px": 501.44999999999345,
+   "risk_u": 8.0,
+   "lots": 1.38,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-4维共振",
+   "hits": [
+    "H4",
+    "FIB",
+    "LSR",
+    "ATR"
+   ],
+   "opened_ts": 1794243890404,
+   "signal_ts": 1794242700000,
+   "last_bar_ts": 1794268800000,
+   "bars_held": 28,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 52%",
+   "exit": 75391.95,
+   "why": "止损",
+   "r": -1.1498,
+   "u": -9.2,
+   "exit_ts": 1794269700000,
+   "closed_ts": 1794272109602
   }
  ],
  "seen": {
