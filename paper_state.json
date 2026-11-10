@@ -31,8 +31,8 @@
    ],
    "opened_ts": 1794243890404,
    "signal_ts": 1794241800000,
-   "last_bar_ts": 1794282300000,
-   "bars_held": 44,
+   "last_bar_ts": 1794285900000,
+   "bars_held": 48,
    "be": true,
    "flow_ok": true,
    "flow_veto": "价跌 + CVD 净买（有主动买盘托底）"
