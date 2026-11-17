@@ -3,40 +3,9 @@
  "date": "2026-11-17",
  "day": {
   "opens": 1,
-  "pnl": 0.0
+  "pnl": -8.63
  },
- "positions": [
-  {
-   "id": "SOL-1794897900000-1",
-   "name": "SOL",
-   "inst": "SOL-USDT-SWAP",
-   "side": "做空",
-   "sgn": -1,
-   "entry": 72.4,
-   "stop": 73.3324,
-   "tp": 69.87,
-   "risk_px": 0.9324000000000012,
-   "risk_u": 8.0,
-   "lots": 7.96,
-   "ct": 1.0,
-   "tp_src": "1H 结构位",
-   "track": 1,
-   "tier": "👑 A+级",
-   "hits": [
-    "PA",
-    "FLOW",
-    "VOL",
-    "VGAP"
-   ],
-   "opened_ts": 1794899452993,
-   "signal_ts": 1794897900000,
-   "last_bar_ts": 1794913200000,
-   "bars_held": 16,
-   "be": false,
-   "flow_ok": true,
-   "flow_veto": null
-  }
- ],
+ "positions": [],
  "history": [
   {
    "id": "BTC-1793768400000-1",
@@ -497,6 +466,42 @@
    "u": -1.42,
    "exit_ts": 1794795300000,
    "closed_ts": 1794796595994
+  },
+  {
+   "id": "SOL-1794897900000-1",
+   "name": "SOL",
+   "inst": "SOL-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 72.4,
+   "stop": 73.3324,
+   "tp": 69.87,
+   "risk_px": 0.9324000000000012,
+   "risk_u": 8.0,
+   "lots": 7.96,
+   "ct": 1.0,
+   "tp_src": "1H 结构位",
+   "track": 1,
+   "tier": "👑 A+级",
+   "hits": [
+    "PA",
+    "FLOW",
+    "VOL",
+    "VGAP"
+   ],
+   "opened_ts": 1794899452993,
+   "signal_ts": 1794897900000,
+   "last_bar_ts": 1794915000000,
+   "bars_held": 18,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": null,
+   "exit": 73.3324,
+   "why": "止损",
+   "r": -1.0781,
+   "u": -8.63,
+   "exit_ts": 1794915900000,
+   "closed_ts": 1794918101500
   }
  ],
  "seen": {
