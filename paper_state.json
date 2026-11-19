@@ -2,10 +2,38 @@
  "version": 2,
  "date": "2026-11-19",
  "day": {
-  "opens": 0,
+  "opens": 1,
   "pnl": 0.0
  },
- "positions": [],
+ "positions": [
+  {
+   "id": "SOL-1795077000000-1",
+   "name": "SOL",
+   "inst": "SOL-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 74.38,
+   "stop": 75.37438,
+   "tp": 71.0,
+   "risk_px": 0.9943800000000067,
+   "risk_u": 8.0,
+   "lots": 7.48,
+   "ct": 1.0,
+   "tp_src": "1H 结构位",
+   "track": 1,
+   "tier": "⚡ B级",
+   "hits": [
+    "PA"
+   ],
+   "opened_ts": 1795082390888,
+   "signal_ts": 1795077000000,
+   "last_bar_ts": 1795077900000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 25%"
+  }
+ ],
  "history": [
   {
    "id": "BTC-1793768400000-1",
@@ -553,11 +581,12 @@
   "SOL-USDT-SWAP|1794928500000": 1794930802158,
   "SOL-USDT-SWAP|1794930300000": 1794934733719,
   "SOL-USDT-SWAP|FVG|1794969900000": 1794977856631,
-  "SOL-USDT-SWAP|FVG|1795005000000": 1795009731370
+  "SOL-USDT-SWAP|FVG|1795005000000": 1795009731370,
+  "SOL-USDT-SWAP|1795077000000": 1795082390888
  },
  "last_open": {
   "BTC-USDT-SWAP": 1794791700312,
-  "SOL-USDT-SWAP": 1794899452993,
+  "SOL-USDT-SWAP": 1795082390888,
   "ETH-USDT-SWAP": 1793930936005
  }
 }
