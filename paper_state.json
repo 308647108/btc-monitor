@@ -27,8 +27,8 @@
    ],
    "opened_ts": 1795082390888,
    "signal_ts": 1795077000000,
-   "last_bar_ts": 1795090500000,
-   "bars_held": 14,
+   "last_bar_ts": 1795095900000,
+   "bars_held": 20,
    "be": false,
    "flow_ok": true,
    "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 25%"
@@ -582,7 +582,8 @@
   "SOL-USDT-SWAP|1794930300000": 1794934733719,
   "SOL-USDT-SWAP|FVG|1794969900000": 1794977856631,
   "SOL-USDT-SWAP|FVG|1795005000000": 1795009731370,
-  "SOL-USDT-SWAP|1795077000000": 1795082390888
+  "SOL-USDT-SWAP|1795077000000": 1795082390888,
+  "ETH-USDT-SWAP|1795091400000": 1795096274322
  },
  "last_open": {
   "BTC-USDT-SWAP": 1794791700312,
