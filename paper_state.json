@@ -3,7 +3,7 @@
  "date": "2026-11-22",
  "day": {
   "opens": 2,
-  "pnl": 0.0
+  "pnl": -2.0
  },
  "positions": [
   {
@@ -30,39 +30,9 @@
    ],
    "opened_ts": 1795313315495,
    "signal_ts": 1795311900000,
-   "last_bar_ts": 1795317300000,
-   "bars_held": 5,
+   "last_bar_ts": 1795321800000,
+   "bars_held": 10,
    "be": true,
-   "flow_ok": true,
-   "flow_veto": null
-  },
-  {
-   "id": "ETH-1795316400000-2",
-   "name": "ETH",
-   "inst": "ETH-USDT-SWAP",
-   "side": "做空",
-   "sgn": -1,
-   "entry": 1671.21,
-   "stop": 1677.8989285714285,
-   "tp": 1578.91,
-   "risk_px": 6.688928571428603,
-   "risk_u": 8.0,
-   "lots": 9.56,
-   "ct": 0.1,
-   "tp_src": "1H 结构位",
-   "track": 2,
-   "tier": "🧬 纯辅助-4维共振",
-   "hits": [
-    "PA",
-    "H4",
-    "VOL",
-    "VGAP"
-   ],
-   "opened_ts": 1795317666397,
-   "signal_ts": 1795316400000,
-   "last_bar_ts": 1795317300000,
-   "bars_held": 0,
-   "be": false,
    "flow_ok": true,
    "flow_veto": null
   }
@@ -633,6 +603,42 @@
    "u": 16.73,
    "exit_ts": 1795191300000,
    "closed_ts": 1795193744697
+  },
+  {
+   "id": "ETH-1795316400000-2",
+   "name": "ETH",
+   "inst": "ETH-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 1671.21,
+   "stop": 1671.21,
+   "tp": 1578.91,
+   "risk_px": 6.688928571428603,
+   "risk_u": 8.0,
+   "lots": 9.56,
+   "ct": 0.1,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-4维共振",
+   "hits": [
+    "PA",
+    "H4",
+    "VOL",
+    "VGAP"
+   ],
+   "opened_ts": 1795317666397,
+   "signal_ts": 1795316400000,
+   "last_bar_ts": 1795320000000,
+   "bars_held": 3,
+   "be": true,
+   "flow_ok": true,
+   "flow_veto": null,
+   "exit": 1671.21,
+   "why": "保本",
+   "r": -0.2498,
+   "u": -2.0,
+   "exit_ts": 1795320900000,
+   "closed_ts": 1795321812966
   }
  ],
  "seen": {
