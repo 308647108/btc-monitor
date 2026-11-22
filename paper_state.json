@@ -2,10 +2,41 @@
  "version": 2,
  "date": "2026-11-22",
  "day": {
-  "opens": 0,
+  "opens": 1,
   "pnl": 0.0
  },
- "positions": [],
+ "positions": [
+  {
+   "id": "BTC-1795311900000-1",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 60060.3,
+   "stop": 60272.228571428575,
+   "tp": 57695.3,
+   "risk_px": 211.92857142856988,
+   "risk_u": 8.0,
+   "lots": 2.94,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-4维共振",
+   "hits": [
+    "PA",
+    "FLOW",
+    "H4",
+    "VOL"
+   ],
+   "opened_ts": 1795313315495,
+   "signal_ts": 1795311900000,
+   "last_bar_ts": 1795312800000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": null
+  }
+ ],
  "history": [
   {
    "id": "BTC-1793768400000-1",
@@ -638,10 +669,12 @@
   "BTC-USDT-SWAP|FVG|1795258800000": 1795259798177,
   "BTC-USDT-SWAP|FVG|1795277700000": 1795279354941,
   "BTC-USDT-SWAP|FVG|1795302000000": 1795309084669,
-  "ETH-USDT-SWAP|FVG|1795302000000": 1795309084669
+  "ETH-USDT-SWAP|FVG|1795302000000": 1795309084669,
+  "BTC-USDT-SWAP|FVG|1795311900000": 1795313315495,
+  "ETH-USDT-SWAP|FVG|1795311900000": 1795313315495
  },
  "last_open": {
-  "BTC-USDT-SWAP": 1794791700312,
+  "BTC-USDT-SWAP": 1795313315495,
   "SOL-USDT-SWAP": 1795107806354,
   "ETH-USDT-SWAP": 1793930936005
  }
