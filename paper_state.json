@@ -1,9 +1,9 @@
 {
  "version": 2,
- "date": "2026-11-22",
+ "date": "2026-11-23",
  "day": {
-  "opens": 6,
-  "pnl": -4.27
+  "opens": 0,
+  "pnl": 0.0
  },
  "positions": [
   {
@@ -29,8 +29,8 @@
    ],
    "opened_ts": 1795354330869,
    "signal_ts": 1795351500000,
-   "last_bar_ts": 1795361400000,
-   "bars_held": 10,
+   "last_bar_ts": 1795365000000,
+   "bars_held": 14,
    "be": false,
    "flow_ok": true,
    "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 41%"
@@ -57,8 +57,8 @@
    ],
    "opened_ts": 1795354330869,
    "signal_ts": 1795353300000,
-   "last_bar_ts": 1795361400000,
-   "bars_held": 8,
+   "last_bar_ts": 1795365000000,
+   "bars_held": 12,
    "be": false,
    "flow_ok": true,
    "flow_veto": "巨鲸逆向：逆 1072k U vs 顺 0k U"
@@ -87,8 +87,8 @@
    ],
    "opened_ts": 1795358851918,
    "signal_ts": 1795354200000,
-   "last_bar_ts": 1795361400000,
-   "bars_held": 7,
+   "last_bar_ts": 1795365000000,
+   "bars_held": 11,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
@@ -117,8 +117,8 @@
    ],
    "opened_ts": 1795362167100,
    "signal_ts": 1795357800000,
-   "last_bar_ts": 1795358700000,
-   "bars_held": 0,
+   "last_bar_ts": 1795365000000,
+   "bars_held": 7,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
