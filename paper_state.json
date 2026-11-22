@@ -2,10 +2,68 @@
  "version": 2,
  "date": "2026-11-22",
  "day": {
-  "opens": 2,
+  "opens": 4,
   "pnl": -4.27
  },
- "positions": [],
+ "positions": [
+  {
+   "id": "BTC-1795351500000-3",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 60721.1,
+   "stop": 61357.239285714284,
+   "tp": 58731.0,
+   "risk_px": 636.1392857142853,
+   "risk_u": 8.0,
+   "lots": 1.14,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-3维共振",
+   "hits": [
+    "H4",
+    "ATR",
+    "VGAP"
+   ],
+   "opened_ts": 1795354330869,
+   "signal_ts": 1795351500000,
+   "last_bar_ts": 1795352400000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 41%"
+  },
+  {
+   "id": "ETH-1795353300000-4",
+   "name": "ETH",
+   "inst": "ETH-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 1704.88,
+   "stop": 1735.22488,
+   "tp": 1578.91,
+   "risk_px": 30.344879999999876,
+   "risk_u": 8.0,
+   "lots": 2.49,
+   "ct": 0.1,
+   "tp_src": "1H 结构位",
+   "track": 1,
+   "tier": "🔥 A级",
+   "hits": [
+    "H4",
+    "ATR"
+   ],
+   "opened_ts": 1795354330869,
+   "signal_ts": 1795353300000,
+   "last_bar_ts": 1795354200000,
+   "bars_held": 0,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "巨鲸逆向：逆 1072k U vs 顺 0k U"
+  }
+ ],
  "history": [
   {
    "id": "BTC-1793768400000-1",
@@ -715,11 +773,13 @@
   "ETH-USDT-SWAP|FVG|1795311900000": 1795313315495,
   "ETH-USDT-SWAP|FVG|1795316400000": 1795317666397,
   "ETH-USDT-SWAP|FVG|1795318200000": 1795330936594,
-  "BTC-USDT-SWAP|FVG|1795315500000": 1795342743508
+  "BTC-USDT-SWAP|FVG|1795315500000": 1795342743508,
+  "BTC-USDT-SWAP|FVG|1795351500000": 1795354330869,
+  "ETH-USDT-SWAP|1795353300000": 1795354330869
  },
  "last_open": {
-  "BTC-USDT-SWAP": 1795313315495,
+  "BTC-USDT-SWAP": 1795354330869,
   "SOL-USDT-SWAP": 1795107806354,
-  "ETH-USDT-SWAP": 1795317666397
+  "ETH-USDT-SWAP": 1795354330869
  }
 }
