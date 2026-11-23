@@ -28,8 +28,8 @@
    ],
    "opened_ts": 1795354330869,
    "signal_ts": 1795353300000,
-   "last_bar_ts": 1795395600000,
-   "bars_held": 46,
+   "last_bar_ts": 1795401000000,
+   "bars_held": 52,
    "be": false,
    "flow_ok": true,
    "flow_veto": "巨鲸逆向：逆 1072k U vs 顺 0k U"
@@ -58,8 +58,8 @@
    ],
    "opened_ts": 1795358851918,
    "signal_ts": 1795354200000,
-   "last_bar_ts": 1795395600000,
-   "bars_held": 45,
+   "last_bar_ts": 1795401000000,
+   "bars_held": 51,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
@@ -88,8 +88,8 @@
    ],
    "opened_ts": 1795362167100,
    "signal_ts": 1795357800000,
-   "last_bar_ts": 1795395600000,
-   "bars_held": 41,
+   "last_bar_ts": 1795401000000,
+   "bars_held": 47,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
