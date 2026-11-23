@@ -3,38 +3,9 @@
  "date": "2026-11-23",
  "day": {
   "opens": 0,
-  "pnl": 0.0
+  "pnl": -8.77
  },
  "positions": [
-  {
-   "id": "BTC-1795351500000-3",
-   "name": "BTC",
-   "inst": "BTC-USDT-SWAP",
-   "side": "做空",
-   "sgn": -1,
-   "entry": 60721.1,
-   "stop": 61357.239285714284,
-   "tp": 58731.0,
-   "risk_px": 636.1392857142853,
-   "risk_u": 8.0,
-   "lots": 1.14,
-   "ct": 0.01,
-   "tp_src": "1H 结构位",
-   "track": 2,
-   "tier": "🧬 纯辅助-3维共振",
-   "hits": [
-    "H4",
-    "ATR",
-    "VGAP"
-   ],
-   "opened_ts": 1795354330869,
-   "signal_ts": 1795351500000,
-   "last_bar_ts": 1795365000000,
-   "bars_held": 14,
-   "be": false,
-   "flow_ok": true,
-   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 41%"
-  },
   {
    "id": "ETH-1795353300000-4",
    "name": "ETH",
@@ -57,8 +28,8 @@
    ],
    "opened_ts": 1795354330869,
    "signal_ts": 1795353300000,
-   "last_bar_ts": 1795365000000,
-   "bars_held": 12,
+   "last_bar_ts": 1795395600000,
+   "bars_held": 46,
    "be": false,
    "flow_ok": true,
    "flow_veto": "巨鲸逆向：逆 1072k U vs 顺 0k U"
@@ -87,8 +58,8 @@
    ],
    "opened_ts": 1795358851918,
    "signal_ts": 1795354200000,
-   "last_bar_ts": 1795365000000,
-   "bars_held": 11,
+   "last_bar_ts": 1795395600000,
+   "bars_held": 45,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
@@ -117,8 +88,8 @@
    ],
    "opened_ts": 1795362167100,
    "signal_ts": 1795357800000,
-   "last_bar_ts": 1795365000000,
-   "bars_held": 7,
+   "last_bar_ts": 1795395600000,
+   "bars_held": 41,
    "be": false,
    "flow_ok": true,
    "flow_veto": null
@@ -762,6 +733,41 @@
    "u": -2.27,
    "exit_ts": 1795337100000,
    "closed_ts": 1795339158129
+  },
+  {
+   "id": "BTC-1795351500000-3",
+   "name": "BTC",
+   "inst": "BTC-USDT-SWAP",
+   "side": "做空",
+   "sgn": -1,
+   "entry": 60721.1,
+   "stop": 61357.239285714284,
+   "tp": 58731.0,
+   "risk_px": 636.1392857142853,
+   "risk_u": 8.0,
+   "lots": 1.14,
+   "ct": 0.01,
+   "tp_src": "1H 结构位",
+   "track": 2,
+   "tier": "🧬 纯辅助-3维共振",
+   "hits": [
+    "H4",
+    "ATR",
+    "VGAP"
+   ],
+   "opened_ts": 1795354330869,
+   "signal_ts": 1795351500000,
+   "last_bar_ts": 1795365000000,
+   "bars_held": 14,
+   "be": false,
+   "flow_ok": true,
+   "flow_veto": "逆向挂单墙：近 0.1% 单档占该侧 41%",
+   "exit": 61357.239285714284,
+   "why": "止损",
+   "r": -1.096,
+   "u": -8.77,
+   "exit_ts": 1795365900000,
+   "closed_ts": 1795395699285
   }
  ],
  "seen": {
